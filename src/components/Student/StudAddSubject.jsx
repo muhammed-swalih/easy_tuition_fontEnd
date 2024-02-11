@@ -10,7 +10,7 @@ function StudAddSubject() {
   const { id, token, username } = studentDetails;
 
   const navToStudTeacher = () => {
-    navigate("/studTeachers", {
+    navigate("/studFilter", {
       state: { id: id, token: token, username: username },
     });
   };

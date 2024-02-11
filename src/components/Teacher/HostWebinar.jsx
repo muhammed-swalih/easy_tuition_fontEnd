@@ -8,33 +8,38 @@ import {
   Checkbox,
 } from "@mui/material";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-
-const CustomTextField = ({ label, type }) => {
-  const [focused, setFocused] = useState(false);
-
-  const handleFocus = () => {
-    setFocused(true);
-  };
-
-  const handleBlur = () => {
-    setFocused(false);
-  };
-
-  return (
-    <TextField
-      label={focused ? label : type}
-      type={type}
-      InputProps={{ style: { borderRadius: "10px" } }}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-    />
-  );
-};
+import { useLocation } from "react-router-dom";
 
 function HostWebinar() {
+  const CustomTextField = ({ label, type }) => {
+    const [focused, setFocused] = useState(false);
+
+    const handleFocus = () => {
+      setFocused(true);
+    };
+
+    const handleBlur = () => {
+      setFocused(false);
+    };
+
+    return (
+      <TextField
+        label={focused ? label : type}
+        type={type}
+        InputProps={{ style: { borderRadius: "10px" } }}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+    );
+  };
+  const location = useLocation();
+
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
   return (
     <div className=" w-full min-h-screen py-4 px-4">
-      <Navbar />
+      <Navbar id={id} token={token} username={username} />
       <div className=" flex flex-col gap-8 mt-5">
         <h1 className=" text-3xl">Host a webinar </h1>
         <div className=" flex flex-col gap-4">

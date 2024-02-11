@@ -32,7 +32,14 @@ function TeachChooseClass() {
 
       if (response.status === 200) {
         console.log(response.data);
-        navTotimeSlot();
+        navigate("/teachTime", {
+          state: {
+            id: id,
+            token: token,
+            username: username,
+            choosedClass: classes,
+          },
+        });
       }
     } catch (error) {
       console.log(error.response.data);
@@ -50,7 +57,7 @@ function TeachChooseClass() {
     const updatedClassDetails = [...classDetails];
     updatedClassDetails[index] = {
       ...updatedClassDetails[index],
-      class: classes[index],
+      classes: classes[index],
       boards: selectedBoards.map((board) => ({
         board: board,
         subjects: [],
@@ -63,9 +70,9 @@ function TeachChooseClass() {
     const copyingClassDetails = [...classDetails];
     copyingClassDetails[index] = {
       ...copyingClassDetails[index],
-      class: classes[index],
+      classes: classes[index],
       boards: selectBoards.map((boards) => ({
-        boards: boards,
+        board: boards,
         subjects: [],
       })),
     };

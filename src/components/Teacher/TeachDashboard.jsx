@@ -3,14 +3,17 @@ import React, { useEffect, useState } from "react";
 import { IoMdOpen } from "react-icons/io";
 import { GiSandsOfTime } from "react-icons/gi";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function TeachDashboard() {
-
+  const navigate = useNavigate();
   const location = useLocation();
-  const teacherDetails = location ? location.state : "nothing"
+  const teacherDetails = location ? location.state : "nothing";
+  const [checkExist, setCheckExist] = useState([]);
 
-  const {id, token, username} = teacherDetails
+  const { id, token, username } = teacherDetails;
+  const [req, setReq] = useState([]);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -18,14 +21,45 @@ function TeachDashboard() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  useEffect(()=>{
-      console.log(teacherDetails);
-  },[])
+  const getRequestNotification = async () => {
+    try {
+      const response = await axios.get("http://localhost:3005/teachReq", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log(response.data);
+        setCheckExist(response.data);
+
+        setReq(response.data);
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  const navToReqDetails = (reqDetails) => {
+    navigate("/studReqDetails", {
+      state: {
+        id: id,
+        token: token,
+        username: username,
+        reqDetails: reqDetails,
+      },
+    });
+  };
+
+  useEffect(() => {
+    console.log(teacherDetails);
+    getRequestNotification();
+  }, []);
   return (
     <div className=" w-full px-4 py-4 min-h-screen">
       <div className=" flex flex-col gap-7">
         <div className=" flex flex-col gap-2">
-          <Navbar />
+          <Navbar id={id} token={token} username={username} />
           <div className=" w-full h-32 text-white bg-violet-500 rounded-xl px-3 py-3">
             <div className=" flex flex-col gap-2">
               <div className=" flex gap-2 items-end">
@@ -112,36 +146,35 @@ function TeachDashboard() {
         </div>
         <div className=" w-full h-auto py-3 px-3 bg-gray-100 shadow-md rounded-xl flex flex-col gap-3">
           <h1 className=" text-2xl font-medium ">Notifications</h1>
-          <div className=" w-full h-auto py-2 px-2 bg-white rounded-xl shadow flex justify-between items-center">
-            <div className=" flex gap-5 items-center">
-              <div className=" w-2 h-2 ml-1 bg-blue-500 rounded-full"></div>
-              <div className=" flex flex-col">
-                <h1>You have a new joint student</h1>
-                <h1 className=" text-sm text-gray-400">1 min</h1>
+          {req.map((items, index) => {
+            return (
+              <div className=" flex flex-col gap-2">
+                <div className=" w-full h-auto py-5 px-5 bg-white rounded-xl shadow flex justify-between items-center">
+                  <div className=" flex gap-5 items-center">
+                    <div className=" flex flex-col">
+                      <div className=" flex items-center gap-1">
+                        <h1>You have a new request</h1>
+                        <h1>from</h1>
+                        <h1 className=" text-lg font-semibold text-violet-600">
+                          {items.studentId.username}
+                        </h1>
+                      </div>
+
+                      <h1 className=" text-sm text-gray-400">1 min</h1>
+                      <h1
+                        onClick={() => {
+                          navToReqDetails(items);
+                        }}
+                        className=" text-blue-500 underline "
+                      >
+                        View Details
+                      </h1>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h1 className=" text-sm text-red-400 underline">Delete</h1>
-            </div>
-          </div>
-          <div className=" w-full h-auto py-2 px-2 bg-white rounded-xl shadow flex justify-between items-center">
-            <div className=" flex gap-5 items-center">
-              <div className=" w-2 h-2 ml-1 bg-blue-500 rounded-full"></div>
-              <div className=" flex flex-col">
-                <h1>You have a new joint student</h1>
-                <h1 className=" text-sm text-gray-400">1 min</h1>
-              </div>
-              <h1 className=" text-sm text-red-400 underline">Delete</h1>
-            </div>
-          </div>
-          <div className=" w-full h-auto py-2 px-2 bg-white rounded-xl shadow flex justify-between items-center">
-            <div className=" flex gap-5 items-center">
-              <div className=" w-2 h-2 ml-1 bg-blue-500 rounded-full"></div>
-              <div className=" flex flex-col">
-                <h1>You have a new joint student</h1>
-                <h1 className=" text-sm text-gray-400">1 min</h1>
-              </div>
-              <h1 className=" text-sm text-red-400 underline">Delete</h1>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

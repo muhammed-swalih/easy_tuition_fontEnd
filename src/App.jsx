@@ -40,6 +40,9 @@ import StudAddSubject from "./components/Student/StudAddSubject";
 import StudWebinar from "./components/Student/StudWebinar";
 import StudTeachers from "./components/Student/StudTeachers";
 import StudFilterTeachers from "./components/Student/StudFilterTeachers";
+import StudTeacherProfile from "./components/Student/StudTeacherProfile";
+import StudReqDetails from "./components/Teacher/StudReqDetails";
+import MyStudDetails from "./components/Teacher/MyStudDetails";
 function App() {
   return (
     <div>
@@ -70,6 +73,8 @@ function App() {
           <Route path="/teachProfile" element={<TeachProfile />} />
           <Route path="/studyMeterial" element={<TeachMeterialPage />} />
           <Route path="/createMeterial" element={<TeachCreateMeterialPage />} />
+          <Route path="/studReqDetails" element={<StudReqDetails />} />
+          <Route path="/MyStudDetails" element={<MyStudDetails />} />
 
           {/* Student router */}
 
@@ -87,6 +92,7 @@ function App() {
           <Route path="/studWebinar" element={<StudWebinar />} />
           <Route path="/studTeachers" element={<StudTeachers />} />
           <Route path="/studFilter" element={<StudFilterTeachers />} />
+          <Route path="/studTeacherProfile" element={<StudTeacherProfile />} />
         </Routes>
       </BrowserRouter>
     </div>

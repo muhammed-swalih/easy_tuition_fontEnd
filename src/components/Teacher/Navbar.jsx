@@ -14,7 +14,9 @@ import { IoIosMenu } from "react-icons/io";
 
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
+  const { id, token, username } = props;
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -22,35 +24,51 @@ function Navbar() {
   };
   const navigate = useNavigate();
   const navToChats = () => {
-    navigate("/teachChats");
+    navigate("/teachChats", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToHome = () => {
-    navigate("/teachDashboard");
+    navigate("/teachDashboard", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToMyClass = () => {
-    navigate("/teachMyClass");
+    navigate("/teachMyClass", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToMyStud = () => {
-    navigate("/myStudents");
+    navigate("/myStudents", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToWebinar = () => {
-    navigate("/TeachWebinar");
+    navigate("/TeachWebinar", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToAssignment = () => {
-    navigate("/teachAssignment");
+    navigate("/teachAssignment", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToProfile = () => {
-    navigate("/teachProfile");
+    navigate("/teachProfile", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToStudy = () => {
-    navigate("/studyMeterial");
+    navigate("/studyMeterial", {
+      state: { id: id, token: token, username: username },
+    });
   };
 
   const navToLogOut = () => {
@@ -58,7 +76,7 @@ function Navbar() {
   };
 
   return (
-    <div>
+    <div className=" pb-10">
       <div className=" w-full h-auto py-2 px-2 bg-gray-100 flex justify-between items-center rounded-xl">
         <IoIosMenu onClick={toggleSidebar} className=" text-4xl " />
         <div className=" flex gap-2 items-center ">

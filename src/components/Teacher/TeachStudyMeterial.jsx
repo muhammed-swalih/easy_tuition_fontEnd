@@ -2,16 +2,24 @@ import React from "react";
 import Navbar from "./Navbar";
 import { BiSolidEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 function TeachStudyMeterial() {
   const navigate = useNavigate();
 
   const navToCreateStudy = () => {
-    navigate("/createMeterial");
+    navigate("/createMeterial", {
+      state: { id: id, token: token, username: username },
+    });
   };
+
+  const location = useLocation();
+
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
   return (
     <div className=" w-full min-h-screen px-4 py-4">
-      <Navbar />
+      <Navbar id={id} token={token} username={username} />
       <div className=" mt-10 flex flex-col gap-5">
         <div className=" w-full flex justify-between items-center">
           <h1 className=" text-2xl font-medium">Study Material</h1>

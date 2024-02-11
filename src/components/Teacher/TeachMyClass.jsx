@@ -1,10 +1,15 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { useLocation } from "react-router-dom";
 
 function TeachMyClass() {
+  const location = useLocation();
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
   return (
     <div className=" w-full min-h-screen px-4 py-4">
-      <Navbar />
+      <Navbar id={id} token={token} username={username} />
       <div className=" flex flex-col gap-5 mt-10">
         <h1 className=" text-2xl font-medium">My Class</h1>
         <div className=" flex flex-col gap-2">

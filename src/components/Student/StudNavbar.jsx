@@ -64,7 +64,7 @@ function StudNavbar(props) {
   return (
     <div className=" pb-4">
       <div>
-        <div className=" w-full h-auto py-2 px-2 bg-gray-100 drop-shadow-md flex justify-between items-center rounded-xl">
+        <div className=" w-full h-auto py-2 px-2 bg-gray-100 drop-shadow-md flex justify-between items-center rounded-lg">
           <IoIosMenu onClick={toggleSidebar} className=" text-4xl " />
           <div className=" flex gap-2 items-center ">
             <FaRegBell className=" text-lg" />

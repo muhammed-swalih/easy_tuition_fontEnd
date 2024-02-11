@@ -17,7 +17,7 @@ function StudDashboard() {
     <div className=" w-full min-h-screen py-4 px-4">
       <StudNavbar id={id} token={token} username={username} />
       <div className=" flex flex-col gap-5 justify-center">
-        <div className=" w-full h-auto bg-violet-500 rounded-xl px-5 py-10 drop-shadow-xl">
+        <div className=" w-full h-auto bg-violet-500 rounded-lg px-5 py-10 drop-shadow-xl">
           <div className=" flex flex-col gap-5">
             <div className=" flex flex-col gap-1">
               <div className=" flex gap-2 items-center text-white">
@@ -74,8 +74,8 @@ function StudDashboard() {
         </div>
         <div className=" flex flex-col gap-3">
           <h1 className=" text-2xl">Today Class</h1>
-          <div className=" w-full rounded-xl bg-slate-100 h-auto flex flex-col gap-3 px-4 py-6 drop-shadow-md">
-            <div className="w-full px-4 py-4 bg-white rounded-xl drop-shadow-md flex items-center justify-between">
+          <div className=" w-full rounded-lg bg-slate-100 h-auto flex flex-col gap-3 px-4 py-6 drop-shadow-md">
+            <div className="w-full px-4 py-4 bg-white rounded-lg drop-shadow-lg flex items-center justify-between">
               <div className=" flex gap-4 items-center w-full">
                 <div className=" w-14 h-14 bg-orange-500 rounded-xl"></div>
                 <div className=" flex flex-col">
@@ -89,7 +89,7 @@ function StudDashboard() {
                 </h1>
               </div>
             </div>
-            <div className="w-full px-4 py-4 bg-white rounded-xl drop-shadow-md flex items-center justify-between">
+            <div className="w-full px-4 py-4 bg-white rounded-lg drop-shadow-lg flex items-center justify-between">
               <div className=" flex gap-4 items-center w-full">
                 <div className=" w-14 h-14 bg-orange-500 rounded-xl"></div>
                 <div className=" flex flex-col">
@@ -103,7 +103,7 @@ function StudDashboard() {
                 </h1>
               </div>
             </div>
-            <div className="w-full px-4 py-4 bg-white rounded-xl drop-shadow-md flex items-center justify-between">
+            <div className="w-full px-4 py-4 bg-white rounded-lg drop-shadow-lg flex items-center justify-between">
               <div className=" flex gap-4 items-center w-full">
                 <div className=" w-14 h-14 bg-orange-500 rounded-xl"></div>
                 <div className=" flex flex-col">

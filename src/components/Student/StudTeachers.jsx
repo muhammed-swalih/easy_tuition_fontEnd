@@ -5,6 +5,8 @@ import axios from "axios";
 import { Rating } from "@mui/material";
 import { LuIndianRupee } from "react-icons/lu";
 import { IoPlay } from "react-icons/io5";
+import { CiFilter } from "react-icons/ci";
+import { FaFilter } from "react-icons/fa6";
 
 function StudTeachers() {
   const navigate = useNavigate();
@@ -16,6 +18,19 @@ function StudTeachers() {
   const [teacherIntro, setTeacherIntro] = useState([]);
   const { id, token, username } = studentDetails;
   const [time, setTime] = useState([]);
+
+  const navToTeacherDetails = (teacherPersonal, teacherIntro, teacherId) => {
+    navigate("/studTeacherProfile", {
+      state: {
+        id: id,
+        token: token,
+        username: username,
+        teacherId: teacherId,
+        teacherPersonal: teacherPersonal,
+        teacherIntro: teacherIntro,
+      },
+    });
+  };
 
   const getAllTeachers = async () => {
     try {
@@ -94,42 +109,41 @@ function StudTeachers() {
         <h1 className=" text-3xl py-3">Teachers</h1>
         <div
           onClick={navToFilter}
-          className=" px-5 py-2 rounded-2xl bg-blue-500 flex items-center justify-center"
+          className=" px-5 py-2 rounded-lg bg-blue-500 flex items-center justify-center"
         >
-          <h1 className=" text-lg text-white">Find Teachers</h1>
+          <div className=" flex gap-2 items-center">
+            <h1 className=" text-2xl text-white">
+              <FaFilter />
+            </h1>
+            <h1 className=" text-lg text-white">Filter teachers</h1>
+          </div>
         </div>
       </div>
       <div className=" flex flex-col gap-5">
         {teachers.map((teacher, index) => {
           return (
             <div key={index} className=" flex flex-col gap-10   ">
-              <div className=" flex flex-col bg-gray-100 gap-2 w-full rounded-2xl drop-shadow-lg h-auto py-8 px-5">
+              <div className=" flex flex-col bg-gray-100 gap-2 w-full rounded-lg drop-shadow-lg h-auto py-8 px-5">
                 <div className=" flex gap-3 items-center">
                   <div className=" w-20 h-20 rounded-full bg-orange-500">
                     <img
                       className="w-full h-full object-cover rounded-full"
-                      src={teacher.picUrl}
+                      src={teacher ? teacher.picUrl : ""}
                       alt=""
                     />
                   </div>
                   <div className=" flex flex-col">
-                    <h1 className=" text-xl">{teacher.teacherId.username}</h1>
+                    <h1 className=" text-xl">
+                      {teacher ? teacher.teacherId.username : ""}
+                    </h1>
                     <Rating value={5} readOnly size="small" />
                     <h1>
-                      Language ({teacher.primaryLang},{teacher.secondaryLang})
+                      Language ({teacher ? teacher.primaryLang : ""},
+                      {teacher ? teacher.secondaryLang : ""})
                     </h1>
                   </div>
                 </div>
-                <hr className=" border-gray-300" />
-                <h1>{teacherIntro[index].intro}</h1>
 
-                <hr className=" border-gray-300" />
-                <div className=" flex items-center gap-1">
-                  <h1 className=" text-lg">Monthly</h1>
-                  <h1 className=" flex items-center text-xl font-medium">
-                    500 <LuIndianRupee />{" "}
-                  </h1>
-                </div>
                 <hr className=" border-gray-300" />
                 <div className=" flex justify-between w-full items-center">
                   <div className=" flex gap-1 items-center">
@@ -139,12 +153,21 @@ function StudTeachers() {
 
                     <a
                       className=" text-blue-500"
-                      href={teacherIntro[index].picUrl}
+                      href={teacherIntro ? teacherIntro[index].picUrl : ""}
                     >
                       Watch the Demo video
                     </a>
                   </div>
-                  <div className=" px-4 py-3 my-1 flex items-center justify-center bg-orange-500 rounded-2xl">
+                  <div
+                    onClick={() => {
+                      navToTeacherDetails(
+                        teachers[index],
+                        teacherIntro[index],
+                        teacher.teacherId._id
+                      );
+                    }}
+                    className=" px-4 py-3 my-1 flex items-center justify-center bg-orange-500 rounded-lg"
+                  >
                     <h1 className=" text-white">View Details</h1>
                   </div>
                 </div>

@@ -1,15 +1,23 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 function TeachWebinar() {
   const navigate = useNavigate();
 
+  const location = useLocation();
+
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
+
   const navToHostWebinar = () => {
-    navigate("/hostWebinar");
+    navigate("/hostWebinar", {
+      state: { id: id, token: token, username: username },
+    });
   };
   return (
     <div className=" px-4 py-4 w-full min-h-screen">
-      <Navbar />
+      <Navbar id={id} token={token} username={username} />
       <div className=" mt-10 flex flex-col gap-10">
         <div className=" w-full flex justify-between items-center">
           <h1 className=" text-2xl font-medium">Webinar</h1>

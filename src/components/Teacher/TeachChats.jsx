@@ -1,14 +1,23 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 function TeachChats() {
+  const location = useLocation();
+
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
+
   const navigate = useNavigate();
   const navToMsg = () => {
-    navigate("/teachMessages");
+    navigate("/teachMessages", {
+      state: { id: id, token: token, username: username },
+    });
   };
   return (
     <div className=" w-full min-h-screen px-4 py-4 flex flex-col gap-5">
-      <Navbar />
+      <Navbar id={id} token={token} username={username} />
       <div className=" flex flex-col gap-3">
         <div className=" flex flex-col ">
           <h1 className=" text-2xl font-medium">Chats</h1>

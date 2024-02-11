@@ -1,12 +1,20 @@
 import React from "react";
 import { GoChevronLeft } from "react-icons/go";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 function TeachMessages() {
+  const location = useLocation();
   const navigate = useNavigate();
 
+  const teacherDetails = location ? location.state : "nothing";
+
+  const { id, token, username } = teacherDetails;
+
   const navToChats = () => {
-    navigate("/teachChats");
+    navigate("/teachChats", {
+      state: { id: id, token: token, username: username },
+    });
   };
   return (
     <div className=" w-full min-h-screen ">

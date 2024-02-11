@@ -109,10 +109,10 @@ function StudPersonal() {
             select
             InputProps={{ style: { borderRadius: "10px" } }}
           >
-            <MenuItem value="EN">English</MenuItem>
-            <MenuItem value="ML">Malayalam</MenuItem>
-            <MenuItem value="HI">Hindi</MenuItem>
-            <MenuItem value="TM">Tamil</MenuItem>
+            <MenuItem value="English">English</MenuItem>
+            <MenuItem value="Malayalam">Malayalam</MenuItem>
+            <MenuItem value="Hindi">Hindi</MenuItem>
+            <MenuItem value="Tamil">Tamil</MenuItem>
           </TextField>
 
           <TextField
@@ -121,10 +121,10 @@ function StudPersonal() {
             select
             InputProps={{ style: { borderRadius: "10px" } }}
           >
-            <MenuItem value="EN">English</MenuItem>
-            <MenuItem value="ML">Malayalam</MenuItem>
-            <MenuItem value="HI">Hindi</MenuItem>
-            <MenuItem value="TM">Tamil</MenuItem>
+            <MenuItem value="English">English</MenuItem>
+            <MenuItem value="Malayalam">Malayalam</MenuItem>
+            <MenuItem value="Hindi">Hindi</MenuItem>
+            <MenuItem value="Tamil">Tamil</MenuItem>
           </TextField>
 
           <TextField
@@ -140,10 +140,10 @@ function StudPersonal() {
             select
             InputProps={{ style: { borderRadius: "10px" } }}
           >
-            <MenuItem value="KL">Kerala</MenuItem>
-            <MenuItem value="KR">Karnataka</MenuItem>
-            <MenuItem value="TN">Tamil Nadu</MenuItem>
-            <MenuItem value="JP">jaipur</MenuItem>
+            <MenuItem value="Kerala">Kerala</MenuItem>
+            <MenuItem value="Karnataka">Karnataka</MenuItem>
+            <MenuItem value="Tamil nadu">Tamil Nadu</MenuItem>
+            <MenuItem value="Jaipur">jaipur</MenuItem>
           </TextField>
           <TextField
             onChange={(e) => setDist(e.target.value)}
@@ -151,10 +151,10 @@ function StudPersonal() {
             select
             InputProps={{ style: { borderRadius: "10px" } }}
           >
-            <MenuItem value="KL">Palakkad</MenuItem>
-            <MenuItem value="KR">Kozhikkod</MenuItem>
-            <MenuItem value="TN">Kollam</MenuItem>
-            <MenuItem value="JP">Kottayam</MenuItem>
+            <MenuItem value="Palakkad">Palakkad</MenuItem>
+            <MenuItem value="Calicut">Kozhikkod</MenuItem>
+            <MenuItem value="Kollam">Kollam</MenuItem>
+            <MenuItem value="Kottayam">Kottayam</MenuItem>
           </TextField>
           <div className=" flex gap-3">
             <TextField
