@@ -58,9 +58,18 @@ function MyStudents() {
         </div>
         {myStudents.map((items, index) => {
           return (
-            <div className=" px-3 py-3 w-full flex flex-col gap-3 shadow-md bg-gray-100 rounded-xl">
+            <div
+              key={index}
+              className=" px-3 py-3 w-full flex flex-col gap-3 shadow-md bg-gray-100 rounded-xl"
+            >
               <div className=" flex gap-4 items-center ">
-                <div className=" w-16 h-16 bg-orange-500 rounded-xl"></div>
+                <div className=" w-16 h-16 bg-orange-500 rounded-xl">
+                  <img
+                    className=" w-full h-full object-cover rounded-xl "
+                    src={items.reqId.studPersonal.picUrl}
+                    alt=""
+                  />
+                </div>
                 <div className="flex flex-col ">
                   <h1 className=" text-lg font-medium">
                     {items.student.username}

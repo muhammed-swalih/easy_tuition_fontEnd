@@ -11,6 +11,8 @@ function TeachDashboard() {
   const location = useLocation();
   const teacherDetails = location ? location.state : "nothing";
   const [checkExist, setCheckExist] = useState([]);
+  const [alreadyInClass, setAlreadyInClass] = useState([]);
+  const [reqIdOnly, setReqIdOnly] = useState([]);
 
   const { id, token, username } = teacherDetails;
   const [req, setReq] = useState([]);
@@ -31,8 +33,6 @@ function TeachDashboard() {
 
       if (response.status === 200) {
         console.log(response.data);
-        setCheckExist(response.data);
-
         setReq(response.data);
       }
     } catch (error) {
@@ -146,9 +146,10 @@ function TeachDashboard() {
         </div>
         <div className=" w-full h-auto py-3 px-3 bg-gray-100 shadow-md rounded-xl flex flex-col gap-3">
           <h1 className=" text-2xl font-medium ">Notifications</h1>
+
           {req.map((items, index) => {
             return (
-              <div className=" flex flex-col gap-2">
+              <div key={index} className=" flex flex-col gap-2">
                 <div className=" w-full h-auto py-5 px-5 bg-white rounded-xl shadow flex justify-between items-center">
                   <div className=" flex gap-5 items-center">
                     <div className=" flex flex-col">

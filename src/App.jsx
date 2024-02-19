@@ -43,59 +43,75 @@ import StudFilterTeachers from "./components/Student/StudFilterTeachers";
 import StudTeacherProfile from "./components/Student/StudTeacherProfile";
 import StudReqDetails from "./components/Teacher/StudReqDetails";
 import MyStudDetails from "./components/Teacher/MyStudDetails";
+import TeachLive from "./components/Teacher/TeachLive";
+import Homepage from "./components/Homepage";
+import LiveMain from "./components/live/LiveMain";
+import LivePage from "./components/live/LivePage";
+import ContextProvider from "../ContextProvider";
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/teacherRegister" element={<TeachRegPage />} />
-          <Route path="/teacherOTP" element={<TeachOTPPage />} />
-          <Route path="/teachPersonal" element={<TeacherPersonalPage />} />
-          <Route path="/teachCollege" element={<TeachCollegePage />} />
-          <Route path="/teachChooseClass" element={<TeachClassPage />} />
-          <Route path="/teachSub" element={<TeachSubectBoardsPage />} />
-          <Route path="/teachTime" element={<TeacherTimePage />} />
-          <Route path="/teachBank" element={<TeacherBankPage />} />
-          <Route path="/teachIntro" element={<TeachIntroPage />} />
-          <Route path="/teachRegSucc" element={<TeachRegSuccPage />} />
-          <Route path="/teachRegFail" element={<TeachRegReject />} />
-          <Route path="/teachDashboard" element={<TeachDashBoardPage />} />
-          <Route path="/teachChats" element={<TeacherChatPage />} />
-          <Route path="/teachMessages" element={<TeachMessagePage />} />
-          <Route path="/teachMyClass" element={<TeachMyClassPage />} />
-          <Route path="/myStudents" element={<MyStudentPages />} />
-          <Route path="/studDetails" element={<StudDetailsPage />} />
-          <Route path="/TeachWebinar" element={<TeachWebinarPage />} />
-          <Route path="/hostWebinar" element={<HostWebinarPage />} />
-          <Route path="/teachAssignment" element={<TeachAssignmentPage />} />
-          <Route path="/createAss" element={<CreateAssPage />} />
-          <Route path="/teachProfile" element={<TeachProfile />} />
-          <Route path="/studyMeterial" element={<TeachMeterialPage />} />
-          <Route path="/createMeterial" element={<TeachCreateMeterialPage />} />
-          <Route path="/studReqDetails" element={<StudReqDetails />} />
-          <Route path="/MyStudDetails" element={<MyStudDetails />} />
+    <ContextProvider>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={<Homepage />} />
 
-          {/* Student router */}
+            <Route path="/teacherRegister" element={<TeachRegPage />} />
+            <Route path="/teacherOTP" element={<TeachOTPPage />} />
+            <Route path="/teachPersonal" element={<TeacherPersonalPage />} />
+            <Route path="/teachCollege" element={<TeachCollegePage />} />
+            <Route path="/teachChooseClass" element={<TeachClassPage />} />
+            <Route path="/teachSub" element={<TeachSubectBoardsPage />} />
+            <Route path="/teachTime" element={<TeacherTimePage />} />
+            <Route path="/teachBank" element={<TeacherBankPage />} />
+            <Route path="/teachIntro" element={<TeachIntroPage />} />
+            <Route path="/teachRegSucc" element={<TeachRegSuccPage />} />
+            <Route path="/teachRegFail" element={<TeachRegReject />} />
+            <Route path="/teachDashboard" element={<TeachDashBoardPage />} />
+            <Route path="/teachChats" element={<TeacherChatPage />} />
+            <Route path="/teachMessages" element={<TeachMessagePage />} />
+            <Route path="/teachMyClass" element={<TeachMyClassPage />} />
+            <Route path="/myStudents" element={<MyStudentPages />} />
+            <Route path="/studDetails" element={<StudDetailsPage />} />
+            <Route path="/TeachWebinar" element={<TeachWebinarPage />} />
+            <Route path="/hostWebinar" element={<HostWebinarPage />} />
+            <Route path="/teachAssignment" element={<TeachAssignmentPage />} />
+            <Route path="/createAss" element={<CreateAssPage />} />
+            <Route path="/teachProfile" element={<TeachProfile />} />
+            <Route path="/studyMeterial" element={<TeachMeterialPage />} />
+            <Route
+              path="/createMeterial"
+              element={<TeachCreateMeterialPage />}
+            />
+            <Route path="/studReqDetails" element={<StudReqDetails />} />
+            <Route path="/MyStudDetails" element={<MyStudDetails />} />
+            <Route path="/teachLive" element={<LiveMain />} />
 
-          <Route path="/studReg" element={<StudReg />} />
-          <Route path="/studOTP" element={<StudOTP />} />
-          <Route path="/studPersonal" element={<StudPersonal />} />
-          <Route path="/schoolDetails" element={<SchoolDetails />} />
-          <Route path="/parentDetails" element={<ParentDetails />} />
-          <Route path="/congrats" element={<StudCongrats />} />
-          <Route path="/studDashboard" element={<StudDashboard />} />
-          <Route path="/studChat" element={<StudChat />} />
-          <Route path="/studMessages" element={<StudMessages />} />
-          <Route path="/studClass" element={<StudClass />} />
-          <Route path="/studAddSubject" element={<StudAddSubject />} />
-          <Route path="/studWebinar" element={<StudWebinar />} />
-          <Route path="/studTeachers" element={<StudTeachers />} />
-          <Route path="/studFilter" element={<StudFilterTeachers />} />
-          <Route path="/studTeacherProfile" element={<StudTeacherProfile />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+            {/* Student router */}
+
+            <Route path="/studReg" element={<StudReg />} />
+            <Route path="/studOTP" element={<StudOTP />} />
+            <Route path="/studPersonal" element={<StudPersonal />} />
+            <Route path="/schoolDetails" element={<SchoolDetails />} />
+            <Route path="/parentDetails" element={<ParentDetails />} />
+            <Route path="/congrats" element={<StudCongrats />} />
+            <Route path="/studDashboard" element={<StudDashboard />} />
+            <Route path="/studChat" element={<StudChat />} />
+            <Route path="/studMessages" element={<StudMessages />} />
+            <Route path="/studClass" element={<StudClass />} />
+            <Route path="/studAddSubject" element={<StudAddSubject />} />
+            <Route path="/studWebinar" element={<StudWebinar />} />
+            <Route path="/studTeachers" element={<StudTeachers />} />
+            <Route path="/studFilter" element={<StudFilterTeachers />} />
+            <Route
+              path="/studTeacherProfile"
+              element={<StudTeacherProfile />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ContextProvider>
   );
 }
 

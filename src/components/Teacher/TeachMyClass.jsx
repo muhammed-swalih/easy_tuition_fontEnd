@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { MyContext } from "../../../Context";
 
 function TeachMyClass() {
+  const contextValue = useContext(MyContext);
+  const navigate = useNavigate();
+
   const location = useLocation();
   const teacherDetails = location ? location.state : "nothing";
 
   const { id, token, username } = teacherDetails;
+
+  const navToLive = () => {
+    navigate("/teachLive", { state: { id, token, username } });
+  };
+
+  useEffect(() => {
+    console.log(contextValue);
+  }, []);
   return (
     <div className=" w-full min-h-screen px-4 py-4">
       <Navbar id={id} token={token} username={username} />
-      <div className=" flex flex-col gap-5 mt-10">
+      <div className=" flex flex-col gap-5 ">
         <h1 className=" text-2xl font-medium">My Class</h1>
         <div className=" flex flex-col gap-2">
           <h1 className=" text-gray-500 text-sm">Today july 29, tuesday</h1>
@@ -24,7 +36,10 @@ function TeachMyClass() {
                 <div className=" w-auto h-auto px-4 py-2 flex items-center justify-center rounded-xl bg-violet-500 text-white">
                   <h1>Postpond</h1>
                 </div>
-                <div className=" w-auto h-auto px-4 py-2 flex items-center justify-center rounded-xl bg-green-500 text-white">
+                <div
+                  onClick={navToLive}
+                  className=" w-auto h-auto px-4 py-2 flex items-center justify-center rounded-xl bg-green-500 text-white"
+                >
                   <h1>Join</h1>
                 </div>
               </div>
